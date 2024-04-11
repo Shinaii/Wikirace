@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>Wikirace_Desktop</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <ApplicationIcon>657px-Wikipedia-logo-transparent.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <Prefer32bit>true</Prefer32bit>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <Prefer32bit>false</Prefer32bit>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="WikiRaceGame.cs">
+        <DependentUpon>Game.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="WikiAlgorithm.cs">
+        <DependentUpon>Game.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
+    </ItemGroup>
+
+</Project>
