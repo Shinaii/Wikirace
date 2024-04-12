@@ -31,4 +31,10 @@
       <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Scripts\wikidel.js">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -17,7 +17,6 @@ public class WikiAlgorithm
             JsonDocument doc = JsonDocument.Parse(json);
             string title = doc.RootElement.GetProperty("query").GetProperty("random").EnumerateArray().First().GetProperty("title").GetString();
             
-            string encodedTitle = HttpUtility.UrlEncode(title).Replace("+", "%20");
             return title;
         }
     }

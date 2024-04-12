@@ -23,13 +23,11 @@ namespace Wikirace_Desktop
         {
             InitializeComponent();
             
-            // Initialize CefSharp
             CefSettings settings = new CefSettings();
-            // Set BrowserSubprocessPath to the location of CefSharp.BrowserSubprocess.exe
+
             string subprocessPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe");
             settings.BrowserSubprocessPath = subprocessPath;
-
-            // Set CachePath to a custom location
+            
             string cachePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CefCache");
             settings.CachePath = cachePath;
 
@@ -58,22 +56,9 @@ namespace Wikirace_Desktop
                 {
                     
                     // Execute JavaScript code to remove Some stuff.
-                    Browser.ExecuteScriptAsync(@"
-                var element = document.querySelector('.vector-header-container');
-                var element2 = document.querySelector('.mw-footer-container');
-                if (element) {
-                    element.remove();
-                    element2.remove();
-                    document.getElementById('left-navigation').remove();
-                    document.getElementById('right-navigation').remove();
-                 }; 
-                    var referencesWrap = document.querySelector('.mw-references-wrap .references');
-                    if (referencesWrap) {
-                        var listItems = referencesWrap.querySelectorAll('li');
-                        listItems.forEach(function(item) {
-                            item.remove();
-                        });
-}");
+                    string Wikidel = File.ReadAllText("Scripts/wikidel.js");
+                    Browser.ExecuteScriptAsync(Wikidel);
+                    
                     this.Dispatcher.Invoke(() =>
                     {
                         if(this.startPage.Replace("Start Page: ", "") == CurrentPage.Text.Replace("Current Page: ", ""))
